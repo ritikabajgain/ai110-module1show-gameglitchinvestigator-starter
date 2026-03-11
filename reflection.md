@@ -6,7 +6,7 @@ Answer each question in 3 to 5 sentences. Be specific and honest about what actu
 
 - What did the game look like the first time you ran it?
 - List at least two concrete bugs you noticed at the start  
-  (for example: "the secret number kept changing" or "the hints were backwards").
+  (for example: "the hints were backwards").
 
 ---1. The hints were wrong; when it needs to display "GO HIGHER" as a hint "Go LOWER" was displayed and vice-versa. 2. When the game was opened for first time, it displays that one guess was already attempted when the user hasn't input anything yet. 3. Scoring is kind of wierd. 4. When the difficulty was changed to hard the range change to 1-50, which isn't hard compared to normal game, which has range 1-100. Also, even when the range is changed to easy or hard, secret number in the range 1-100 is generated which didn't match the range for the difficulty level. And the game always displays "Guess a number between 1 and 100" for every level.
 
@@ -32,9 +32,7 @@ I prompted the Claude to change the secret number and reset the game based on th
 
 ## 4. What did you learn about Streamlit and state?
 
-- In your own words, explain why the secret number kept changing in the original app.
 - How would you explain Streamlit "reruns" and session state to a friend who has never used Streamlit?
-- What change did you make that finally gave the game a stable secret number?
 
 ---
 
