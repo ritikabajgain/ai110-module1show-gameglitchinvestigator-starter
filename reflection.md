@@ -42,3 +42,5 @@ I prompted the Claude to change the secret number and reset the game based on th
   - This could be a testing habit, a prompting strategy, or a way you used Git.
 - What is one thing you would do differently next time you work with AI on a coding task?
 - In one or two sentences, describe how this project changed the way you think about AI generated code.
+  I would like to improve my prompting strategy, before making any changes to the code I would like to ask for possible suggestions to fix the bug and review the suggested ideas carefully before implementing it to the actual code.
+  In my opinion, AI is much more clever; in my case when I propmpt it to change the range for the hard level since it doesn't reflect hard game at the begining it changes the range along with the number of attempts allowed for eachh level of game making the different level of the game sound more logical.
