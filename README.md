@@ -25,25 +25,20 @@ It wrote the code, ran away, and now the game is unplayable.
 
 ## 📝 Document Your Experience
 
-- [] Describe the game's purpose.
-- [] Detail which bugs you found.
-- [] Explain what fixes you applied.
-
 **Game Purpose:**
 This is a number-guessing game where the player tries to identify a hidden number within a set number of attempts. The difficulty level selected at the start determines the range of possible numbers, and after each guess the game tells the player whether the secret number is higher or lower.
 
 **Bugs Found:**
 
-- **Reversed hints:** The "Higher/Lower" feedback was flipped — when the secret number was higher, the game told the player to guess lower, and vice versa.
+- **Reversed hints:** The "Higher/Lower" feedback was flipped; when the secret number was higher, the game told the player to guess lower, and vice versa.
 - **State not resetting:** When a new game began, the attempt counter and score were not cleared, so stale values from the previous round carried over.
-- **Secret number out of range:** Changing the difficulty level updated the displayed number range, but the secret number was not regenerated to match — so it could fall completely outside the new range.
+- **Secret number out of range:** Changing the difficulty level updated the displayed number range, but the secret number was not regenerated to match, so it could fall completely outside the new range.
 
 **Fixes Applied:**
 I worked with Claude and GitHub Copilot to resolve each bug. For every issue, I described the exact broken behavior in my prompt and asked for a targeted fix. I reviewed each suggestion before applying it, accepting only the changes that directly addressed the bug without altering unrelated parts of the code.
 
 ## 📸 Demo
 
-- [ ] [Insert a screenshot of your fixed, winning game here]
       ![alt text](image.png)
 
 ## 🚀 Stretch Features
