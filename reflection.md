@@ -31,7 +31,7 @@ Answer each question in 3 to 5 sentences. Be specific and honest about what actu
 
 - How would you explain Streamlit "reruns" and session state to a friend who has never used Streamlit?
 
----
+--- Every time we interact with a Streamlit app — like clicking a button or typing something — the entire Python script runs again from the top. This is called a "rerun." The problem is that any regular variable we set gets wiped out on each rerun, so things like the secret number or the attempt count would reset on every click. That is where session state comes in: it is basically a small storage space that remembers values across reruns so they do not disappear. Once I stored the secret number in session state, it stayed the same for the whole game instead of changing every time the player clicked "Submit."
 
 ## 5. Looking ahead: your developer habits
 

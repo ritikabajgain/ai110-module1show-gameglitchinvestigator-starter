@@ -25,17 +25,26 @@ It wrote the code, ran away, and now the game is unplayable.
 
 ## 📝 Document Your Experience
 
-- [ ] Describe the game's purpose.
-- [ ] Detail which bugs you found.
-- [ ] Explain what fixes you applied.
-      The game's purpose is to allow players to guess the secret number multiple times based on the difficulty level selected by the user; it has a funtion to show the hint whether the secret number is higher or lower.
-      One of the bug I found was the hint bug. The game shows reversed hint for every number guessed by the player. Another bug was the game displayed the wrong number of attempts left or when the game was reset, the number of attempts and the score remain unchanged. One more bug was when the difficulty level was changed, the range for numbers changed but the secret number doesn't changed accordingly.
-      I used Claude and Copilot to fix the bugs mentioned above by giving prompt to suggest me the best changes possible to fix the bug by exactly describing how the bug looks like and keeping the changes in the code suggested by the AI agents.
+- [] Describe the game's purpose.
+- [] Detail which bugs you found.
+- [] Explain what fixes you applied.
+
+**Game Purpose:**
+This is a number-guessing game where the player tries to identify a hidden number within a set number of attempts. The difficulty level selected at the start determines the range of possible numbers, and after each guess the game tells the player whether the secret number is higher or lower.
+
+**Bugs Found:**
+
+- **Reversed hints:** The "Higher/Lower" feedback was flipped — when the secret number was higher, the game told the player to guess lower, and vice versa.
+- **State not resetting:** When a new game began, the attempt counter and score were not cleared, so stale values from the previous round carried over.
+- **Secret number out of range:** Changing the difficulty level updated the displayed number range, but the secret number was not regenerated to match — so it could fall completely outside the new range.
+
+**Fixes Applied:**
+I worked with Claude and GitHub Copilot to resolve each bug. For every issue, I described the exact broken behavior in my prompt and asked for a targeted fix. I reviewed each suggestion before applying it, accepting only the changes that directly addressed the bug without altering unrelated parts of the code.
 
 ## 📸 Demo
 
 - [ ] [Insert a screenshot of your fixed, winning game here]
-      (image.png)
+      ![alt text](image.png)
 
 ## 🚀 Stretch Features
 
