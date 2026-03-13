@@ -10,7 +10,7 @@ def get_range_for_difficulty(difficulty: str):
     
     # FIXME: Logic breaks here
     if difficulty == "Hard":
-        return 1, 200
+        return 1, 50
     return 1, 100
 
 
@@ -88,25 +88,25 @@ if "secret" not in st.session_state or st.session_state.get("difficulty") != dif
 
 st.subheader("Make a guess")
 
-with st.expander("Developer Debug Info"):
-    st.write("Secret:", st.session_state.secret)
-    st.write("Attempts:", st.session_state.attempts)
-    st.write("Score:", st.session_state.score)
-    st.write("Difficulty:", difficulty)
-    st.write("History:", st.session_state.history)
+# Reserve top position for the attempts banner; populate after state updates.
+attempts_info = st.empty()
+
+# Reserve position for debug panel; populate after state updates.
+debug_info = st.empty()
 
 with st.form("guess_form"):
     raw_guess = st.text_input(
         "Enter your guess:",
         key=f"guess_input_{difficulty}"
     )
-    submit = st.form_submit_button("Submit Guess 🚀")
-
-col1, col2 = st.columns(2)
-with col1:
-    new_game = st.button("New Game 🔁")
-with col2:
-    show_hint = st.checkbox("Show hint", value=True)
+    # Keep all controls in one row while preserving form behavior.
+    col1, col2, col3 = st.columns([1, 1, 1.2])
+    with col1:
+        submit = st.form_submit_button("Submit Guess 🚀")
+    with col2:
+        new_game = st.form_submit_button("New Game 🔁")
+    with col3:
+        show_hint = st.checkbox("Show hint", value=True, key="show_hint")
 
 # FIX: Used Claude to fully reset the game for New Game, including score, ststus, history, and attempt_limit for a clean start
 if new_game:
@@ -172,11 +172,22 @@ if submit:
                     f"Score: {st.session_state.score}"
                 )
 
-# FIX: Updated the guess instrustion using Claude to reflect the correct range for the level of difficulty chosen by the player
-st.info(
+attempts_left = st.session_state.attempt_limit - st.session_state.attempts
+if attempts_left < 0:
+    attempts_left = 0
+
+attempts_info.info(
     f"Guess a number between {low} and {high}. "
-    f"Attempts left: {st.session_state.attempt_limit - st.session_state.attempts}"
+    f"Attempts left: {attempts_left}"
 )
+
+with debug_info.container():
+    with st.expander("Developer Debug Info"):
+        st.write("Secret:", st.session_state.secret)
+        st.write("Attempts:", st.session_state.attempts)
+        st.write("Score:", st.session_state.score)
+        st.write("Difficulty:", difficulty)
+        st.write("History:", st.session_state.history)
 
 st.divider()
 st.caption("Built by an AI that claims this code is production-ready.")

@@ -8,7 +8,7 @@ Answer each question in 3 to 5 sentences. Be specific and honest about what actu
 - List at least two concrete bugs you noticed at the start  
   (for example: "the hints were backwards").
 
----1. The hints were wrong; when it needs to display "GO HIGHER" as a hint "Go LOWER" was displayed and vice-versa. 2. When the game was opened for first time, it displays that one guess was already attempted when the user hasn't input anything yet. 3. Scoring is kind of wierd. 4. When the difficulty was changed to hard the range change to 1-50, which isn't hard compared to normal game, which has range 1-100. Also, even when the range is changed to easy or hard, secret number in the range 1-100 is generated which didn't match the range for the difficulty level. And the game always displays "Guess a number between 1 and 100" for every level.
+--- When I first ran the game, the interface looked playable, but several behaviors were clearly broken. The hint direction was reversed, so it showed "Go LOWER" when it should have shown "Go HIGHER," and vice versa. The attempts-left display was also off by one at the start of a game. I also noticed that changing difficulty did not fully reset the game state, and the "Guess a number" instruction still showed the normal range instead of updating per difficulty.
 
 ## 2. How did you use AI as a teammate?
 
@@ -16,10 +16,7 @@ Answer each question in 3 to 5 sentences. Be specific and honest about what actu
 - Give one example of an AI suggestion that was correct (including what the AI suggested and how you verified the result).
 - Give one example of an AI suggestion that was incorrect or misleading (including what the AI suggested and how you verified the result).
 
---- I used Copilot and Claude to fix the bug.
-The correct AI suggestion I received was when I asked to fix the hint bug; it show me the line of code where the bug was located and what was wrong in the logic. I prompt it to correct the logic and save the changes. To verify, I submit my gusses to check whether the bug was fixed or not.
-
-I prompted the Claude to change the secret number and reset the game based on the level of difficulty chosen by the player, the claude not only does that but also change the numbers of attempts allowed in different difficulty level to match the level selected by the player which confused me at firt; the number of attempts allowed for easy level is 6, normal is 8, and haed is 5 with varying number ranges for each level of difficulty.
+--- I used Claude Opus 4.6 as my main AI teammate in this project. One correct suggestion was to fix the hint logic by correcting the guess comparison, and I verified it by entering test guesses above and below the secret number and checking that the hint direction matched. One misleading suggestion was that, while fixing logic issues, it also changed parts of my UI layout that I did not ask to change, such as control positions and where instruction text appeared. I verified that by comparing the app before and after the edits and noticing that the New Game and Show hint controls were arranged differently and the "Guess a number between ..." instruction moved on the page.
 
 ## 3. Debugging and testing your fixes
 
@@ -28,7 +25,7 @@ I prompted the Claude to change the secret number and reset the game based on th
   and what it showed you about your code.
 - Did AI help you design or understand any tests? How?
 
---- I ran the code and played the game myself to check whether the bugs were fixed or not; I checked manually whether the secret numbers generated for each level of difficulty match the difficulty level chosen by the player. Beside that I prompted Claude to make me test cases in the test_game_logic.py to check the hint logic and run the test through pytest command in terminal.
+--- I confirmed the fixes by running the app and playing the game myself multiple times. During manual testing, I checked whether each difficulty level generated a secret number within its correct range, which helped me verify that difficulty settings were working as expected. I also asked Claude to help create test cases in test_game_logic.py for the hint logic, then ran them using pytest in the terminal. Using both manual checks and automated tests, I was more confident that the bugs were actually fixed.
 
 ## 4. What did you learn about Streamlit and state?
 
@@ -42,5 +39,5 @@ I prompted the Claude to change the secret number and reset the game based on th
   - This could be a testing habit, a prompting strategy, or a way you used Git.
 - What is one thing you would do differently next time you work with AI on a coding task?
 - In one or two sentences, describe how this project changed the way you think about AI generated code.
-  I would like to improve my prompting strategy, before making any changes to the code I would like to ask for possible suggestions to fix the bug and review the suggested ideas carefully before implementing it to the actual code.
-  In my opinion, AI is much more clever; in my case when I propmpt it to change the range for the hard level since it doesn't reflect hard game at the begining it changes the range along with the number of attempts allowed for eachh level of game making the different level of the game sound more logical.
+
+--- One habit I want to keep is improving my prompting strategy: before applying any code changes, I will first ask for multiple possible fixes and compare the options. Next time, I will be more deliberate about reviewing each AI suggestion line by line before accepting it, especially when a change might affect game flow or UI behavior. This project changed how I view AI-generated code because I now see it as a strong assistant, but not something I should trust blindly. AI can speed up debugging and testing, but I still need to verify logic, run tests, and make the final decisions as the developer.
