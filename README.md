@@ -39,7 +39,7 @@ I worked with Claude and GitHub Copilot to resolve each bug. For every issue, I 
 
 ## 📸 Demo
 
-      ![alt text](image.png)
+![alt text](image.png)
 
 ## 🚀 Stretch Features
 
